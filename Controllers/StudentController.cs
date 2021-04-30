@@ -28,10 +28,14 @@ namespace WebApplication2.Controllers
         }
 
         public IActionResult New()
-        {
+        { 
             return View();
         }
         public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Edit()
         {
             return View();
         }
