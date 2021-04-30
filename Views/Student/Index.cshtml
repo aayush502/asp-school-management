@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h4 class="text-center text-uppercase">List of employee</h4>
+<h4 class="text-center text-uppercase">List of Students</h4>
 
 <p>
-    <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New</a>
+    <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i> Add New Student</a>
 </p>
 <table class="table table-bordered">
     <thead>
@@ -17,24 +17,28 @@
             <th>@Html.DisplayNameFor(model => model.Age)</th>
             <th>@Html.DisplayNameFor(model => model.Semester)</th>
             <th>@Html.DisplayNameFor(model => model.Address)</th>
+            <th>Actions</th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach (var employee in Model)
+        @foreach (var student in Model)
         {
-            <tr>
-                <td>
-                    <img src="~/images/@employee.ProfilePicture"
-                         class="rounded-circle"
-                         height="40" width="40"
-                         asp-append-version="true" />
-                    @employee.FullName
-                </td>
-                <td>@employee.Gender</td>
-                <td>@employee.Age</td>
-                <td>@employee.Semester</td>
-                <td>@employee.Address</td>
-            </tr>
+        <tr>
+            <td>
+                <img src="~/images/@student.ProfilePicture"
+                     class="rounded-circle"
+                     height="40" width="40"
+                     asp-append-version="true" />
+                @student.FullName
+            </td>
+            <td>@student.Gender</td>
+            <td>@student.Age</td>
+            <td>@student.Semester</td>
+            <td>@student.Address</td>
+            <td><a asp-action="Edit" method="post" asp-route-id="@student.Id">Edit</a>
+            <button asp-page-handler="Delete" asp-route-id="@student.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button></td
+        </tr>
 
         }
     </tbody>

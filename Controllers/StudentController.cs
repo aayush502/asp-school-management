@@ -35,6 +35,10 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+        public IActionResult Edit()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
