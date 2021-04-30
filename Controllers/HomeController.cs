@@ -33,10 +33,12 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Home()
         {
             return View();
         }
+        
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

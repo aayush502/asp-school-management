@@ -32,7 +32,7 @@ namespace WebApplication2
                     Configuration.GetConnectionString("myconn")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddMvc();
         }
@@ -40,6 +40,10 @@ namespace WebApplication2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("home.cshtml");
+            app.UseDefaultFiles(options);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
